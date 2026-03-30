@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnovaSchool</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>InnovaSchool Projekt</h1>
+    </header>
+    <main>
+        <div id="first">
+            <h2>VLAN-ok</h2>
+            <p>A VLAN-ok IP címzéséhez a 172.16.0.0/16 Ip címet vettük alapul, ezt bontottuk subnetekre.</p>
+            <ul>
+                <li>Tanár: 172.16.50.0/24</li>
+                <li>Admin: 172.16.11.0/24 </li>
+                <li>Guest: 172.16.55.0/24</li>
+                <li>Diák: 172.16.64.0/22 </li>
+            </ul>
+        </div>
+        <div>
+            <h2>Wi-fi elérés</h2>
+            <h3>Tanár:</h3>
+            <ul>
+                <li>SSID: TANAR</li>
+                <li>Jelszó: TANAR123</li>
+            </ul>
+            <h3>Diák:</h3>
+            <ul>
+                <li>SSID: DIAK</li>
+                <li>Jelszó: DIAK1234</li>
+            </ul>
+        </div>
+        <div>
+            <h2>A hálózat topológiája</h2>
+            <img src="Képernyőkép 2026-03-25 100337 másolata.png" alt="A hálózat topológiája">
+        </div>
+        <div>
+            <h2>DHCP</h2>
+            <h3>Tanár</h3>
+            <ul>
+                <li>Kezdő IP: 172.16.50.2</li>
+                <li>Kiosztható címek: 55db</li>
+            </ul>
+            <h3>Diák</h3>
+            <ul>
+                <li>Kezdő IP: 172.16.64.2</li>
+                <li>Kiosztható címek: 650db</li>
+            </ul>
+            <h3>Guest</h3>
+            <ul>
+                <li>Kezdő IP: 172.16.55.2</li>
+                <li>Kiosztható címek: 55db</li>
+            </ul>
+        </div>
+        <div>
+            <h2>ACL szabályzatok</h2>
+            <img src="Képernyőkép 2026-03-25 100554.png" alt="ACL">
+            <p>GUEST vlan részére tiltva van minden kapcsolat az interneten kívül.</p>
+            <p>Diák vlan részére tiltva van az admin és a szerver vlan-hoz való hozzáférés(kivéve a szükséges szolgáltatásokat)</p>
+        
+        </div>
+        <div>
+            <h2>Működési jegyzőkönyv</h2>
+            <h3>Fizikai felépítés</h3>
+            <p>A hálózat középpontjában egy layer 3 switch áll, ebbe van bekötve a termekben elhelyezett switchek. A termekben elhelyezett switchekhez kapcsolódnak az access pointok, illetve a géptermekben az itt elhelyezett számítógépek. Az access pointokon segítségével lehet csatlakozni a tanári, a diák és a vendég hálózatokra, amelyek külön VLAN-okat alkotnak. A központi L3 switchhez csatlakozik továbbá a belső szerver is. A kapcsolat a szolgáltató felé szintén a központi switchen keresztül történik a kapcsolat, ez egy tűzfalon keresztül valósul meg. A termekben a kéréseknek megfelelő számú számítógép helyezkedik el.<p>
+            <h3>IP címzés</h3>
+            <p>Az IP címzés DHCP-vel, automatikusan történik. A hálózathoz csatlakozó eszközök külön VLAN-okba kerülnek, amelyek különböző jogosultságokkal rendelkeznek. A hálózatban vannak statikus címmel rendelkező eszközök is, ezek a szerver, a nyomtatók, az admin számítógép, illetve az átjárók, amelyek .1-es IP címet kaptak.</p>
+            <h3>Szolgáltatások</h3>
+            <p>A hálózat rendelkezik saját, belső szerverrel, amely biztosít webszerver, DHCP, DNS, illetve levelező szolgáltatásokat. A hálózaton kívülről érkező csomagokat tűzfal ellenőrzi.</p>
+            <h3>Switchek</h3>
+            <p>A switcheket a hálózatban SSH segítségével lehet elérni. A központi switchen port-security van beállítva a szükséges portokon.</p>
+            <div class="kozep">
+                <img class="ketto" src="Képernyőkép 2026-03-25 100718.png" alt ="SSH"> 
+                <img class="ketto" src="Képernyőkép 2026-03-25 100522.png" alt="port-security">
+            </div>
+            <video src="Timeline1 1.mov" controls></video>
+        </div>
+        <div>
+            <h3>Tesztelési jegyzőkönyv</h3>
+            <p>A tesztelést visszhang válaszokkal hajtottuk végre</p>
+            <table>
+                <tr>
+                    <th>
+                        Forrás
+                    </th>
+                    <th>
+                        Cél
+                    </th>
+                    <th>
+                        Állapot
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        PC0
+                    </td>
+                    <td>
+                        Laptop1(1)
+                    </td>
+                    <td>
+                        Sikeres
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        PC0
+                    </td>
+                    <td>
+                        Printer0
+                    </td>
+                    <td>
+                        Sikertelen
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        PC0
+                    </td>
+                    <td>
+                        Server0
+                    </td>
+                    <td>
+                        Sikertelen
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        PC0
+                    </td>
+                    <td>
+                        Server1
+                    </td>
+                    <td>
+                        Sikeres
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        PC0
+                    </td>
+                    <td>
+                        PC0(4)
+                    </td>
+                    <td>
+                        Sikeres
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Laptop1(1)
+                    </td>
+                    <td>
+                        Printer0
+                    </td>
+                    <td>
+                        Sikeres
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Smartphone0
+                    </td>
+                    <td>
+                        Laptop1(1)
+                    </td>
+                    <td>
+                        Sikertelen
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Smartphone0
+                    </td>
+                    <td>
+                        Printer0
+                    </td>
+                    <td>
+                        Sikertelen
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Smartphone0
+                    </td>
+                    <td>
+                        Server0
+                    </td>
+                    <td>
+                        Sikertelen
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Smartphone0
+                    </td>
+                    <td>
+                        Server1
+                    </td>
+                    <td>
+                        Sikeres
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Smartphone0
+                    </td>
+                    <td>
+                        PC0(4)
+                    </td>
+                    <td>
+                        Sikertelen
+                    </td>
+                </tr>
+            </table>
+            <h3 class="haver" onclick="meg()">Megjegyzések</h3>
+            <p class="elso">A tűzfal bár rendelkezik a működéshez szükséges konfigurációval, azonban a packet tracer hiánnyossága miatt ezt nem lehet használni így az internetkapcsolatot egy a tűzfal kábele alatt húzódó optikai kábellel oldottuk meg.</p>
+            <p class="elso">Az ACL-ek létrehozásukkor a kívánt módon szabáylozták a vlanok forgalmát, ezt csak a program első újranyitásáig volt hajlandó elvégezni</p>
+            <p class="elso">A tesztelések és hibák gyorsabb javítása érdekében nem adtunk meg jelszavakat a switcheken</p>
+            <p class="elso">SSH-hoz az ADMIN ADMIN felhasználónév-jelszó páros használható minden switchen.</p>
+            <p class="elso">A program stabilitása érdekében csak a bemutatáshoz szükséges számú termet és számítógépet helyeztünk el.</p>
+        </div>
+    </main>
+</body>
+</html>

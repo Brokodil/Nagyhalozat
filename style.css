@@ -1,0 +1,111 @@
+body{
+    background-color: #355872;
+    padding: 0px;
+    margin: 0;
+    font-family: "Figtree";
+}
+
+header{
+    margin: 0px;
+    height: 80px;
+    width: 100%;
+    background-color: #7AAACE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+main{
+    margin: auto;
+    padding: 10px;
+    width: 80%;
+    min-height: 80vh;
+    height: 100%;
+    background-color: #F7F8F0;
+    font-size: large;
+}
+
+h1{
+    text-align: center;
+    font-size: 50px;
+}
+
+h2{
+    text-align: center;
+    font-size: xx-large;
+}
+
+h3{
+    font-size: x-large;
+}
+
+img{
+    width: 80%;
+    margin: auto;
+    display: block;
+    margin-bottom: 15px;
+}
+
+video{
+    width: 80%;
+    margin: auto;
+    display: block;
+    margin-bottom: 15px;
+}
+
+div{
+    border-top: black 2px solid;
+    padding: 5px;
+    margin: 5px;
+}
+
+table{
+    margin: auto;
+    border: 2px black solid;
+    width: 80%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+td, th{
+    border: 2px black solid;
+    width: 33%;
+}
+
+th{
+    background-color: #9CD5FF;
+    font-size: x-large;
+}
+
+#first{
+    border-top: 0px;
+}
+
+.ketto{
+    width: 40%;
+    display: inline-block;
+}
+.kozep{
+    text-align: center;
+    border: 0px;
+}
+
+.elso {
+    display: none;
+}
+
+.elso.show {
+    display: block;
+}
+
+
+.haver:hover {
+    color: blue;   
+}
+
+.haver.red:hover {
+    color: red;    
+}
